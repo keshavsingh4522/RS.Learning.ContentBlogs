@@ -1,0 +1,36 @@
+﻿@page "/markdown-viewer"
+@inject IHttpClientFactory HttpClientFactory
+
+<h3>Markdown Viewer</h3>
+
+@if (string.IsNullOrEmpty(RenderedHtml))
+{
+    <p>Loading Markdown content...</p>
+}
+else
+{
+    <div class="markdown-body">
+        @((MarkupString)RenderedHtml)
+    </div>
+}
+
+@code {
+    private string RenderedHtml;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Fetch the Markdown file
+            var httpClient = HttpClientFactory.CreateClient();
+            var markdownContent = await httpClient.GetStringAsync("https://localhost:7001/files/sample.md");
+
+            // Convert Markdown to HTML using Markdig
+            RenderedHtml = Markdig.Markdown.ToHtml(markdownContent);
+        }
+        catch (Exception ex)
+        {
+            RenderedHtml = $"<p>Error loading Markdown: {ex.Message}</p>";
+        }
+    }
+}
