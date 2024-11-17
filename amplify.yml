@@ -15,7 +15,7 @@ frontend:
     build:
       commands:
         - echo "Building the Blazor WebAssembly app"
-        - ./dotnet9/dotnet publish -c Release -o release
+        - ./dotnet9/dotnet publish src/RS.WebApp.ContentBlog.App/RS.WebApp.ContentBlog.App.csproj -c Release -o release
   artifacts:
     baseDirectory: release/wwwroot
     files:
