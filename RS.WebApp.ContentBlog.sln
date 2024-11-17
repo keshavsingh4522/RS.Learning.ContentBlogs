@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RS.WebApp.ContentBlog.App", "src\RS.WebApp.ContentBlog.App\RS.WebApp.ContentBlog.App.csproj", "{FD16F293-43B5-4EFE-96DA-5DB6531264E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RS.WebApp.ContentBlog.Core", "src\RS.WebApp.ContentBlog.Core\RS.WebApp.ContentBlog.Core.csproj", "{02C0EBF8-0C6D-4A9A-9EC5-2F90A8DD749D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FD16F293-43B5-4EFE-96DA-5DB6531264E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD16F293-43B5-4EFE-96DA-5DB6531264E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD16F293-43B5-4EFE-96DA-5DB6531264E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02C0EBF8-0C6D-4A9A-9EC5-2F90A8DD749D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02C0EBF8-0C6D-4A9A-9EC5-2F90A8DD749D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02C0EBF8-0C6D-4A9A-9EC5-2F90A8DD749D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02C0EBF8-0C6D-4A9A-9EC5-2F90A8DD749D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

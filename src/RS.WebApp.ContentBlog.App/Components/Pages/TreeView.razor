@@ -1,0 +1,36 @@
+﻿@page "/tree-view"
+@using System.IO
+@using System.Linq
+@rendermode InteractiveServer
+
+
+<h3>File System Tree View</h3>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <p style="color:red">@errorMessage</p>
+}
+else if (directories.Any() || files.Any())
+{
+    <ul>
+        @foreach (var dir in directories)
+        {
+            <TreeItem DirectoryName="@dir" OnMethodCalled="LoadSelectedFile" />
+        }
+
+        @foreach (var file in files)
+        {
+            <li>
+                <button @onclick="() => LoadSelectedFile(file)">@Path.GetFileName(file)</button>
+            </li>
+        }
+    </ul>
+}
+
+<div class="container-fluid">
+
+    @if (!string.IsNullOrWhiteSpace(SelectedFileName))
+    {
+        <MarkdownViewer SelectedFile="@SelectedFileName" />
+    }
+</div>
