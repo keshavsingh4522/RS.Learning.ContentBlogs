@@ -1,17 +1,23 @@
 version: 1
-blazor:
+frontend:
   phases:
     preBuild:
       commands:
+        - echo "Installing .NET SDK"
         - curl -sSL https://dot.net/v1/dotnet-install.sh > dotnet-install.sh
-        - chmod +x *.sh
+        - echo "File downloaded"
+        - chmod +x dotnet-install.sh
+        - echo "File executed"
         - ./dotnet-install.sh -c 9.0 -InstallDir ./dotnet9
+        - echo "Dotnet installed"
         - ./dotnet9/dotnet --version
+        - echo "Dotnet version checked"
     build:
       commands:
+        - echo "Building the Blazor WebAssembly app"
         - ./dotnet9/dotnet publish -c Release -o release
   artifacts:
-    baseDirectory: /release/wwwroot
+    baseDirectory: release/wwwroot
     files:
       - '**/*'
   cache:
