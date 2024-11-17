@@ -1,32 +1,30 @@
 ﻿@using System.IO
 @rendermode InteractiveServer
 
-<li>
-    @Path.GetFileName(DirectoryName)
+<strong>📁 @Path.GetFileName(DirectoryName)</strong>
 
-    @if (HasSubdirectories)
-    {
-        <button @onclick="ToggleSubdirectories">Toggle</button>
-        @if (IsExpanded)
-        {
-            <ul>
-                @foreach (var dir in Subdirectories)
-                {
-                    <TreeItem DirectoryName="@dir" />
-                }
-            </ul>
-        }
-    }
-    else
+@if (HasSubdirectories)
+{
+    <button @onclick="ToggleSubdirectories">Toggle</button>
+    @if (IsExpanded)
     {
         <ul>
-            @foreach (var file in Files)
+            @foreach (var dir in Subdirectories)
             {
-                <button @onclick="() => CallParentMethod(file)">@Path.GetFileName(file)</button>
+                <TreeItem DirectoryName="@dir" />
             }
         </ul>
     }
-</li>
+}
+else
+{
+    <ul>
+        @foreach (var file in Files)
+        {
+            <button @onclick="() => CallParentMethod(file)" class="btn btn-link text-decoration-none">📝 @Path.GetFileName(file)</button>
+        }
+    </ul>
+}
 
 @code {
     [Parameter]

@@ -5,7 +5,6 @@ namespace RS.WebApp.ContentBlog.App.Components.Pages;
 
 public partial class MarkdownViewer : ComponentBase
 {
-
     [Parameter]
     public string SelectedFile { get; set; }
     private string RenderedHtml = string.Empty;

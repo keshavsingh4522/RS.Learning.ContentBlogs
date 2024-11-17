@@ -1,4 +1,4 @@
-﻿@page "/tree-view"
+﻿@page "/content-blogs"
 @using System.IO
 @using System.Linq
 @rendermode InteractiveServer
@@ -6,31 +6,56 @@
 
 <h3>File System Tree View</h3>
 
-@if (!string.IsNullOrEmpty(errorMessage))
-{
-    <p style="color:red">@errorMessage</p>
-}
-else if (directories.Any() || files.Any())
-{
-    <ul>
-        @foreach (var dir in directories)
-        {
-            <TreeItem DirectoryName="@dir" OnMethodCalled="LoadSelectedFile" />
-        }
-
-        @foreach (var file in files)
-        {
-            <li>
-                <button @onclick="() => LoadSelectedFile(file)">@Path.GetFileName(file)</button>
-            </li>
-        }
-    </ul>
-}
-
 <div class="container-fluid">
+    <!-- Search Bar -->
+    <div class="row my-3">
+        <div class="col-md-6">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Search files..."
+                   @bind="SearchTerm"
+                   @bind:event="oninput" />
+        </div>
+    </div>
 
+    <!-- Display Files and Directories -->
+    <div class="row">
+        <div class="col-md-12">
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <p class="text-danger">@errorMessage</p>
+            }
+            else if (filteredFiles.Any() || filteredDirectories.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var dir in filteredDirectories)
+                    {
+                        <li class="list-group-item">
+                            <TreeItem DirectoryName="@dir" OnMethodCalled="LoadSelectedFile" />
+                        </li>
+                    }
+
+                    @foreach (var file in filteredFiles)
+                    {
+                        <li class="list-group-item">
+                            <button class="btn btn-link text-decoration-none"
+                                    @onclick="() => LoadSelectedFile(file)">
+                                📝 @Path.GetFileName(file)
+                            </button>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+
+    <!-- File Viewer -->
     @if (!string.IsNullOrWhiteSpace(SelectedFileName))
     {
-        <MarkdownViewer SelectedFile="@SelectedFileName" />
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <MarkdownViewer SelectedFile="@SelectedFileName" />
+            </div>
+        </div>
     }
 </div>

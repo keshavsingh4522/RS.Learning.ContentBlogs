@@ -9,6 +9,14 @@ public partial class TreeView : ComponentBase
     private string[] files = [];
     private string errorMessage = string.Empty;
     private string SelectedFileName = string.Empty;
+    private string SearchTerm { get; set; } = string.Empty;
+
+    // Filtered lists for search results
+    private IEnumerable<string> filteredDirectories => directories
+        .Where(dir => string.IsNullOrWhiteSpace(SearchTerm) || dir.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase));
+
+    private IEnumerable<string> filteredFiles => files
+        .Where(file => string.IsNullOrWhiteSpace(SearchTerm) || Path.GetFileName(file).Contains(SearchTerm, StringComparison.OrdinalIgnoreCase));
 
     protected override void OnInitialized()
     {
