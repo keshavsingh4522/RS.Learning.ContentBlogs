@@ -6,7 +6,7 @@ namespace RS.WebApp.ContentBlog.App.Components.Pages;
 public partial class MarkdownViewer : ComponentBase
 {
     [Parameter]
-    public string SelectedFile { get; set; }
+    public string? SelectedFile { get; set; }
     private string RenderedHtml = string.Empty;
 
     protected override async Task OnInitializedAsync()
@@ -44,7 +44,7 @@ public partial class MarkdownViewer : ComponentBase
         }
     }
 
-    private async Task LoadMarkdown(string fileName)
+    private async Task LoadMarkdown(string? fileName)
     {
         try
         {

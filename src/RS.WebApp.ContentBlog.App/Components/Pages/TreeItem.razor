@@ -28,7 +28,7 @@ else
 
 @code {
     [Parameter]
-    public string DirectoryName { get; set; }
+    public string? DirectoryName { get; set; }
     private string[] Subdirectories { get; set; } = Array.Empty<string>();
     private string[] Files { get; set; } = Array.Empty<string>();
     private bool IsExpanded { get; set; } = false;
@@ -43,7 +43,7 @@ else
         LoadFolderContents(DirectoryName);
     }
 
-    private void LoadFolderContents(string path)
+    private void LoadFolderContents(string? path)
     {
         if (Directory.Exists(path))
         {
