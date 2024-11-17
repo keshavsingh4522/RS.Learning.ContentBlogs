@@ -17,7 +17,7 @@ frontend:
         - echo "Building the Blazor WebAssembly app"
         - ./dotnet9/dotnet publish -c Release -o release
   artifacts:
-    baseDirectory: release/wwwroot
+    baseDirectory: release
     files:
       - '**/*'
   cache:
