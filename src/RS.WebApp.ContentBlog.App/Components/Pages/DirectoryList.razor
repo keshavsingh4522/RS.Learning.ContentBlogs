@@ -1,0 +1,27 @@
+﻿@page "/directory-list"
+@using System.IO
+
+<h3>Directory List</h3>
+
+<ul>
+    @foreach (var dir in directories)
+    {
+        <li>@dir</li>
+    }
+</ul>
+
+@code {
+    private List<string> directories = new List<string>();
+
+    protected override void OnInitialized()
+    {
+        string currentPath = Directory.GetCurrentDirectory();
+        var dirInfo = new DirectoryInfo(currentPath);
+        var dirs = dirInfo.EnumerateDirectories("*", new EnumerationOptions { RecurseSubdirectories = true });
+
+        foreach (var dir in dirs)
+        {
+            directories.Add(dir.FullName);
+        }
+    }
+}
