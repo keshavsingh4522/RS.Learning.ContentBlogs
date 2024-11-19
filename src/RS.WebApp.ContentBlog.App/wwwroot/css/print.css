@@ -1,0 +1,12 @@
+﻿@media print {
+    /* Hide headers and footers */
+    @page {
+        size: auto !important;
+        margin: 0 !important;
+    }
+
+    /* Hide only the unprintable content */
+    .unprintable, .unprintable * {
+        display: none !important;
+    }
+}
