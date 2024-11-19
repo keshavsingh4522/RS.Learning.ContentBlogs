@@ -1,0 +1,6 @@
+services:
+  rs.webapp.contentblog.app:
+    image: ${DOCKER_REGISTRY-}rswebappcontentblogapp
+    build:
+      context: .
+      dockerfile: src/RS.WebApp.ContentBlog.App/Dockerfile
