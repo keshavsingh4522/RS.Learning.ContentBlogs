@@ -20,7 +20,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseStaticFiles(); // Ensure static files middleware is added
 
 app.UseAntiforgery();
 
