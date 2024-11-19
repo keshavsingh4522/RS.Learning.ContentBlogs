@@ -48,7 +48,7 @@ else
         if (Directory.Exists(path))
         {
             Subdirectories = Directory.GetDirectories(path);
-            Files = Directory.GetFiles(path);
+            Files = Directory.GetFiles(path, "*.md"); // Only include .md files
         }
     }
 
