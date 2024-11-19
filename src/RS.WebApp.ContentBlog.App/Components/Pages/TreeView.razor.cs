@@ -4,7 +4,7 @@ namespace RS.WebApp.ContentBlog.App.Components.Pages;
 
 public partial class TreeView : ComponentBase
 {
-    private readonly string folderPath = @"wwwroot\files"; // Folder path to load files and directories
+    private readonly string folderPath = @"wwwroot/files"; // Folder path to load files and directories
     private string[] directories = [];
     private string[] files = [];
     private string errorMessage = string.Empty;
@@ -46,7 +46,7 @@ public partial class TreeView : ComponentBase
 
     private void LoadSelectedFile(string filePath)
     {
-        SelectedFileName = string.Join("\\", filePath.Split("\\").Skip(2));
+        SelectedFileName = string.Join("/", filePath.Split("/").Skip(2));
         StateHasChanged(); // Notify the UI that the component has finished loading
     }
 }
