@@ -31,7 +31,7 @@ public partial class TreeView : ComponentBase
             if (Directory.Exists(path))
             {
                 directories = Directory.GetDirectories(path);
-                files = Directory.GetFiles(path);
+                files = Directory.GetFiles(path, "*.md"); // Only include .md files
             }
             else
             {
