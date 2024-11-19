@@ -4,7 +4,7 @@ namespace RS.WebApp.ContentBlog.App.Components.Pages;
 
 public partial class TreeView : ComponentBase
 {
-    private readonly string folderPath = @"home\site\wwwroot\wwwroot\files"; // Folder path to load files and directories
+    private readonly string folderPath = @"wwwroot\files"; // Folder path to load files and directories
     private string[] directories = [];
     private string[] files = [];
     private string errorMessage = string.Empty;
@@ -35,7 +35,7 @@ public partial class TreeView : ComponentBase
             }
             else
             {
-                errorMessage = $"Directory '{path}' does not exist.";
+                errorMessage = $"Directory '{path}' does not exist. current path: {Directory.GetCurrentDirectory()}";
             }
         }
         catch (Exception ex)
